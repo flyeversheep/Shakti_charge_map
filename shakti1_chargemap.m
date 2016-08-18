@@ -34,19 +34,19 @@ function shakti1_chargemap(startin)
                 end
                 %first 3 island vertex
                 if(origin(1)+2<=dim(1)&&origin(2)+4<=dim(2))
-                    resultarray(origin(1)+1,origin(2)+3)=filearray(origin(1)+2,origin(2)+3)-filearray(origin(1)+1,origin(2)+4)-filearray(origin(1)+2,origin(2)+4);
+                    resultarray(origin(1)+1,origin(2)+3)=filearray(origin(1)+2,origin(2)+3)-filearray(origin(1)+1,origin(2)+4)+filearray(origin(1)+2,origin(2)+4);
                 end
                 %second 3 island vertex
                 if(origin(1)+2<=dim(1)&&origin(2)+2<=dim(2))
-                    resultarray(origin(1)+1,origin(2)+1)=filearray(origin(1)+1,origin(2)+1)-filearray(origin(1)+1,origin(2)+2)-filearray(origin(1)+2,origin(2)+2);
+                    resultarray(origin(1)+1,origin(2)+1)=filearray(origin(1)+1,origin(2)+1)+filearray(origin(1)+1,origin(2)+2)-filearray(origin(1)+2,origin(2)+2);
                 end
                 %third 3 island vertex
                 if(origin(1)+4<=dim(1)&&origin(2)+2<=dim(2))
-                    resultarray(origin(1)+3,origin(2)+1)=filearray(origin(1)+3,origin(2)+1)+filearray(origin(1)+4,origin(2)+1)-filearray(origin(1)+3,origin(2)+2);
+                    resultarray(origin(1)+3,origin(2)+1)=-filearray(origin(1)+3,origin(2)+1)+filearray(origin(1)+4,origin(2)+1)-filearray(origin(1)+3,origin(2)+2);
                 end
                 %fourth 3 island vertex
                 if(origin(1)+4<=dim(1)&&origin(2)+4<=dim(2))
-                    resultarray(origin(1)+3,origin(2)+3)=filearray(origin(1)+3,origin(2)+3)+filearray(origin(1)+4,origin(2)+3)-filearray(origin(1)+4,origin(2)+4);
+                    resultarray(origin(1)+3,origin(2)+3)=filearray(origin(1)+3,origin(2)+3)-filearray(origin(1)+4,origin(2)+3)-filearray(origin(1)+4,origin(2)+4);
                 end
             end
         end
