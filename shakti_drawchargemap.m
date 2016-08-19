@@ -1,4 +1,6 @@
 function shakti_drawchargemap(startin)
+%This version can plot whether it's the happy or unhappy vertex for the 3
+%legged vertices. Put a cross mark on the vertex if it's happy. 
     switch nargin
     case 1
         start=startin;
@@ -9,8 +11,10 @@ function shakti_drawchargemap(startin)
      total=input('please input the total number of images you want to analyze:');
      for k=start:start+total-1
         filename=sprintf('chargemap%s%04d.xls',filen,k);
+        filename2=sprintf('3islandmap%s%04d.xls',filen,k);
         figurename=sprintf('chargemap%s%04d.tiff',filen,k);
         filearray=xlsread(filename);
+        filearray2=xlsread(filename2);
         h=figure('visible','off');hold on;
         DisplayFigure=0;
         titlename=sprintf('Charge map of shakti, file%s',filen);
@@ -27,7 +31,7 @@ function shakti_drawchargemap(startin)
                     else
                         shape=0.5;
                     end
-                    circle(x,y,shape,filearray(i,j));
+                    circle(x,y,shape,filearray(i,j),filearray2(i,j));
                 end
             end
         end
@@ -55,10 +59,12 @@ function create_legend()
   patch(x,y,neg3);
   patch(50,-50,'w');
   patch(50,-50,'w');
-  hleg=legend('charge>2','charge=2','charge=1','charge=0','charge=-1','charge=-2','charge<-2','Big 4 island vertex','Small 3 island vertex',-1);
+  patch(50,-50,'w');
+  hleg=legend('charge>2','charge=2','charge=1','charge=0','charge=-1','charge=-2','charge<-2','Big 4 island vertex','Small 3 island vertex','Cross: happy vertex',-1);
   %set(hleg,'position',[0.3 0.3 0.2 0.05]);
 end
-function circle(x0,y0,shapefactor,charge)
+function circle(x0,y0,shapefactor,charge,happy)
+%3 legged vertex is happy if happy=-1, it's unhappy if happy=1
   a=10*shapefactor; t = linspace(0,2*pi);
   x = x0 + a*cos(t);
   y = y0 + a*sin(t);
@@ -83,5 +89,8 @@ function circle(x0,y0,shapefactor,charge)
       patch(x,y,neg2);
   elseif(charge<=-3)
       patch(x,y,neg3);
+  end
+  if(happy==-1)
+      plot(x0,y0,'x','MarkerSize',17);
   end
 end
