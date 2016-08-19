@@ -30,11 +30,19 @@ function shakti1_chargemap(startin)
                 origin=[1+i*4 1+j*4];
                 %first 4 island vertex
                 if(origin(1)+1<=dim(1)&&origin(2)+1<=dim(2))
-                    resultarray(origin(1),origin(2))=filearray(origin(1),origin(2))+filearray(origin(1)+1,origin(2))-filearray(origin(1),origin(2)+1)-filearray(origin(1)+1,origin(2)+1);
+                    temp = filearray(origin(1),origin(2))+filearray(origin(1)+1,origin(2))-filearray(origin(1),origin(2)+1)-filearray(origin(1)+1,origin(2)+1);
+                    resultarray(origin(1),origin(2)) = temp;
+                    if(temp ==0 )
+                         resultarray2(origin(1),origin(2)) = filearray(origin(1),origin(2))*filearray(origin(1)+1,origin(2));
+                    end
                 end
                 %second 4 island vertex
                 if(origin(1)+3<=dim(1)&&origin(2)+3<=dim(2))
-                    resultarray(origin(1)+2,origin(2)+2)=filearray(origin(1)+2,origin(2)+2)+filearray(origin(1)+3,origin(2)+2)-filearray(origin(1)+2,origin(2)+3)-filearray(origin(1)+3,origin(2)+3);
+                    temp = filearray(origin(1)+2,origin(2)+2)+filearray(origin(1)+3,origin(2)+2)-filearray(origin(1)+2,origin(2)+3)-filearray(origin(1)+3,origin(2)+3);
+                    resultarray(origin(1)+2,origin(2)+2) = temp;
+                    if(temp ==0)
+                         resultarray2(origin(1)+2,origin(2)+2) = filearray(origin(1)+2,origin(2)+2)*filearray(origin(1)+3,origin(2)+2);
+                    end
                 end
                 %first 3 island vertex
                 if(origin(1)+2<=dim(1)&&origin(2)+4<=dim(2))
