@@ -60,8 +60,11 @@ function create_legend()
   patch(50,-50,'w');
   patch(50,-50,'w');
   patch(50,-50,'w');
-  hleg=legend('charge>2','charge=2','charge=1','charge=0','charge=-1','charge=-2','charge<-2','Big 4 island vertex','Small 3 island vertex','Cross: happy vertex',-1);
-  %set(hleg,'position',[0.3 0.3 0.2 0.05]);
+  hleg=legend('charge>2','charge=2','charge=1','charge=0','charge=-1','charge=-2','charge<-2','Big 4 island vertex','Small 3 island vertex','Cross: happy vertex',-1,'Location','eastoutside');
+%   set(hleg,'position',[0.5 0.3 0.2 0.05]);
+axis off
+
+  
 end
 function circle(x0,y0,shapefactor,charge,happy)
 %3 legged vertex is happy if happy=-1, it's unhappy if happy=1
@@ -91,6 +94,6 @@ function circle(x0,y0,shapefactor,charge,happy)
       patch(x,y,neg3);
   end
   if(happy==-1)
-      plot(x0,y0,'x','MarkerSize',17);
+      plot(x0,y0,'x','MarkerSize',17,'MarkerEdgeColor','k');
   end
 end
