@@ -14,7 +14,7 @@ function shakti1_chargemap(startin)
      filen=input('Please input the name of the file you want to analyze, end with #:');
      total=input('please input the total number of images you want to analyze:');
      for k=start:start+total-1
-        filename=sprintf('%s%04d.xls',filen,k);
+        filename=sprintf('shakti600_input/%s%04d.xls',filen,k);
         resultname=sprintf('chargemap%s%04d.xls',filen,k);
         resultname2=sprintf('3islandmap%s%04d.xls',filen,k);
         filearray=xlsread(filename);
