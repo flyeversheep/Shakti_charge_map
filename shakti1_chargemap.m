@@ -78,7 +78,7 @@ function shakti1_chargemap(startin)
                 end
             end
         end
-        %xlswrite(resultname,resultarray);
         xlswrite(resultname,resultarray);
+        xlswrite(resultname2,resultarray2);
      end
 end
